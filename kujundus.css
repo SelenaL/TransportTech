@@ -14,14 +14,11 @@
 	table{border-collapse:collapse;border-spacing:0;}
 	body{-webkit-text-size-adjust:none}
 
-
-
 	.container {
 		width: 87%;
 		margin-left: auto;
 		margin-right: auto;
 	}
-
 
 body {
 	margin: 0em;
@@ -55,28 +52,12 @@ body {
 }
 
 
-
-.button-style1 {
-	display: inline-block;
-	margin: 2em 1em 1em 0em;
-	padding: .5em 1em;
-	background: #000000;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: .80em;
-	color: #FFFFFF;
-}
-
-
-
-
-
 #header {
 	overflow: hidden;
 	background: url(reka5.png) no-repeat right -2em;
 	margin: 0 auto 0 auto;
 	padding: 0 0 4em 0;
-	background-size: 60%;
+	background-size: 55%;
 }
 
 
@@ -84,7 +65,7 @@ body {
 #logo {
 	overflow: hidden;
 	padding: 15em 0.25em 2em 0em;
-	text-shadow: 1px 1px 0px #188FB9;
+	text-shadow: 1px 1px 0px #848484;
 	text-transform: uppercase;
 }
 
@@ -104,8 +85,6 @@ body {
 	color: #2E2E2E
 }
 
-
-
 #menu {
 	overflow: hidden;
 }
@@ -119,15 +98,13 @@ body {
 
 #nav a {
 	display: block;
-	float: left;
-	margin-right: 0.12em;
-	padding: 1em 1.5em;
+	padding: 1em 1.2em;
 	background: #2E2E2E;
 	box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,0.25);
 	text-decoration: none;
-	text-shadow: 1px 1px 0px #0C749C;
+	text-shadow: 1px 1px 0px #848484;
 	text-transform: uppercase;
-	font-size: .90em;
+	font-size: 90%;
 	color: #FFFFFF;
 }
 
@@ -140,23 +117,5 @@ body {
 }
 
 #menu a:hover {
-}
-
-
-
-#welcome {
-}
-
-#welcome .content {
-	overflow: hidden;
-	padding: 0em 3em 0em 3em;
-}
-
-
-#welcome a img {
-	display: block;
-	float: left;
-	margin-right: 2em;
-	width: 20%;
 }
 
