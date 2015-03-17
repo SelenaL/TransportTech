@@ -16,6 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <script src="/ChunkFive_400.font.js" type="text/javascript"></script>
                     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     <script src="/22r.js" type="text/javascript"></script>
+                    <script src="/facebook.js" type="text/javascript"></script>
+                    <script src="/facebook2.js" type="text/javascript"></script>
                      
 			
 		
@@ -24,13 +26,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 			<div class="container">
 				<div id="header">
-                                    <nav2 id="nav2">
+                                    <div id="nav2">
                                          <ul>
                                                 <li><a href="<?php echo site_url('/main/login');?>" title="Logi sisse">Logi sisse</a></li> 
                                                      <li><a href="<?php echo site_url('/main/register');?>" title="Registreeru">Registreeru</a></li>
                                                   
                                                   
-                                       </ul> </nav2>
+                                       </ul> </div>
 					<div id="logo">
 						<h1><a href="<?php echo site_url('/main/home');?>">Veoteenused</a></h1>
 						

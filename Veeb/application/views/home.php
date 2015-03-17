@@ -6,7 +6,13 @@ include('header.php');
 					<div class="12u skel-cell-important">
 						<section class="content">
 							
-	odkfsijfdiosjdisd
+	
+                            <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
         </section>
 					</div>
 				</div>

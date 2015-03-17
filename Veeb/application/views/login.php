@@ -1,7 +1,8 @@
 <?php
 include('header.php');
 
-?>
+?> 
+
 						
 	
 				<div id="form_wrapper" class="form_wrapper">
@@ -42,17 +43,20 @@ include('header.php');
 							</div>
 						</div>
 						<div class="bottom">
-							<div class="remember">
-								<input type="checkbox" />
-								<span>Send me updates</span>
-							</div>
-							<input type="submit" value="Register" />
+							<input type="submit" value="Register" /><br>
+                                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
+                            </fb:login-button>
+                                                        
+
+<div id="status">
+</div>
 							<a href="index.html" rel="login" class="linkform">You have an account already? Log in here</a>
 							<div class="clear"></div>
 						</div>
 					</form>
 					<form class="login active">
 						<h3>Login</h3>
+
 						<div>
 							<label>Username:</label>
 							<input type="text" />
@@ -64,8 +68,14 @@ include('header.php');
 							<span class="error">This is an error</span>
 						</div>
 						<div class="bottom">
-							<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
-							<input type="submit" value="Login"></input>
+							<input type="submit" value="Login"></input><br>
+                                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
+                            </fb:login-button>
+                                                        
+
+<div id="status">
+</div>
+                                                     
 							<a href="register.html" rel="register" class="linkform">You don't have an account yet? Register here</a>
 							<div class="clear"></div>
 						</div>
@@ -78,10 +88,14 @@ include('header.php');
 							<input type="text" />
 							<span class="error">This is an error</span>
 						</div>
+   
+                                                
+                                                
 						<div class="bottom">
 							<input type="submit" value="Send reminder"></input>
 							<a href="index.html" rel="login" class="linkform">Suddenly remebered? Log in here</a>
 							<a href="register.html" rel="register" class="linkform">You don't have an account? Register here</a>
+                                                        
 							<div class="clear"></div>
 						</div>
 					</form>
@@ -90,7 +104,9 @@ include('header.php');
 			</div>
 			
 		</div>
-                		<br><br>
+                
+                
+                <br><br><br>
 
 <?php
 include('footer.php');
