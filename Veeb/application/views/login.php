@@ -7,68 +7,79 @@ include('header.php');
 	
 				<div id="form_wrapper" class="form_wrapper">
 					<form class="register">
-						<h3>Register</h3>
+						<h3>Registreerimine</h3>
 						<div class="column">
 							<div>
-								<label>First Name:</label>
+								<label>Eesnimi:</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Last Name:</label>
+								<label>Perekonnanimi:</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
-							<div>
-								<label>Website:</label>
-								<input type="text" value="http://"/>
+                                                        <div>
+								<label>Telefoni nr:</label>
+								<input type="text"/>
 								<span class="error">This is an error</span>
 							</div>
+                                                        <div>
+								<label>Kasutajanimi:</label>
+								<input type="text"/>
+								<span class="error">This is an error</span>
+							</div>
+							
 						</div>
 						<div class="column">
-							<div>
-								<label>Username:</label>
+                                                        <div>
+								<label>Ettevõte:</label>
 								<input type="text"/>
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Email:</label>
+								<label>Veebileht:</label>
+								<input type="text" value="http://"/>
+								<span class="error">This is an error</span>
+							</div>
+							<div>
+								<label>E-mail:</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Password:</label>
+								<label>Salasõna:</label>
 								<input type="password" />
 								<span class="error">This is an error</span>
 							</div>
 						</div>
 						<div class="bottom">
-							<input type="submit" value="Register" /><br>
+							<input type="submit" value="Registreeri" /><br>
                                                         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
                             </fb:login-button>
                                                         
 
 <div id="status">
 </div>
-							<a href="index.html" rel="login" class="linkform">You have an account already? Log in here</a>
+							<a href="index.html" rel="login" class="linkform">Sul on juba konto olemas? Logi sisse siit</a>
 							<div class="clear"></div>
 						</div>
 					</form>
 					<form class="login active">
-						<h3>Login</h3>
+						<h3>Logi sisse</h3>
 
 						<div>
-							<label>Username:</label>
+							<label>Kasutajanimi:</label>
 							<input type="text" />
 							<span class="error">This is an error</span>
 						</div>
 						<div>
-							<label>Password: <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Forgot your password?</a></label>
+							<label>Salasõna: <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Unustasid salasõna?</a></label>
 							<input type="password" />
 							<span class="error">This is an error</span>
 						</div>
 						<div class="bottom">
-							<input type="submit" value="Login"></input><br>
+							<input type="submit" value="Logi sisse"></input><br>
                                                         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
                             </fb:login-button>
                                                         
@@ -76,15 +87,15 @@ include('header.php');
 <div id="status">
 </div>
                                                      
-							<a href="register.html" rel="register" class="linkform">You don't have an account yet? Register here</a>
+							<a href="register.html" rel="register" class="linkform">Sul pole veel kontot? Registreeru siin</a>
 							<div class="clear"></div>
 						</div>
                                                 
 					</form>
 					<form class="forgot_password">
-						<h3>Forgot Password</h3>
+						<h3>Unustasid salasõna</h3>
 						<div>
-							<label>Username or Email:</label>
+							<label>Kasutajanimi või E-mail:</label>
 							<input type="text" />
 							<span class="error">This is an error</span>
 						</div>
@@ -92,9 +103,9 @@ include('header.php');
                                                 
                                                 
 						<div class="bottom">
-							<input type="submit" value="Send reminder"></input>
-							<a href="index.html" rel="login" class="linkform">Suddenly remebered? Log in here</a>
-							<a href="register.html" rel="register" class="linkform">You don't have an account? Register here</a>
+							<input type="submit" value="Saada meeldetuletus"></input>
+							<a href="index.html" rel="login" class="linkform">Tuli meelde? Logi sisse siit</a>
+							<a href="register.html" rel="register" class="linkform">Sul pole kontot? Registreeri siin</a>
                                                         
 							<div class="clear"></div>
 						</div>
