@@ -1,9 +1,11 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html>
+?>
+<!DOCTYPE html>
+
 <head>
-	<meta charset="utf-8">
+		<meta charset="utf-8">
 	<title>Veoteenused</title>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -16,13 +18,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <script src="/ChunkFive_400.font.js" type="text/javascript"></script>
                     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     <script src="/22r.js" type="text/javascript"></script>
-                    <script src="/facebook.js" type="text/javascript"></script>
-                    <script src="/facebook2.js" type="text/javascript"></script>
+			</head>
+                    //<script src="/facebook.js" type="text/javascript"></script>
+                  //  <script src="/facebook2.js" type="text/javascript"></script>
                      
 			
 		
-	</head>
-	<body>
+	
+	
 		
 			<div class="container">
 				<div id="header">

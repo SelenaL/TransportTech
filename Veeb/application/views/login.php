@@ -10,47 +10,37 @@ include('header.php');
 						<h3>Registreerimine</h3>
 						<div class="column">
 							<div>
-								<label>Eesnimi:</label>
-								<input type="text" />
-								<span class="error">This is an error</span>
+								<label for='username' >Kasutajanimi:</label>
+								<input type='text' name='username' id='username' maxlength="50" />								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Perekonnanimi:</label>
-								<input type="text" />
+								<label for='password' >Salasõna:</label>
+								<input type='password' name='password' id='password' maxlength="50" />
+							
 								<span class="error">This is an error</span>
 							</div>
+							
+
+				
                                                         <div>
-								<label>Telefoni nr:</label>
-								<input type="text"/>
-								<span class="error">This is an error</span>
-							</div>
-                                                        <div>
-								<label>Kasutajanimi:</label>
-								<input type="text"/>
-								<span class="error">This is an error</span>
+								<label for='telefon' >Telefoni nr:</label>
+								<input type='text' name='telefon' id='telefon' maxlength="50" />								<span class="error">This is an error</span>
 							</div>
 							
 						</div>
 						<div class="column">
                                                         <div>
-								<label>Ettevõte:</label>
-								<input type="text"/>
-								<span class="error">This is an error</span>
+								<label for='name' >Nimi:</label>
+								<input type='text' name='name' id='name' maxlength="50" />								<span class="error">This is an error</span>
 							</div>
-							<div>
-								<label>Veebileht:</label>
-								<input type="text" value="http://"/>
-								<span class="error">This is an error</span>
+                                                        
+														<div>
+								<label for='email' >E-mail:</label>
+								<input type='text' name='email' id='email' maxlength="50" />								<span class="error">This is an error</span>
 							</div>
-							<div>
-								<label>E-mail:</label>
-								<input type="text" />
-								<span class="error">This is an error</span>
-							</div>
-							<div>
-								<label>Salasõna:</label>
-								<input type="password" />
-								<span class="error">This is an error</span>
+	<div>
+								<label for='ettevote' >Ettevõte:</label>
+								<input type='text' name='ettevote' id='ettevote' maxlength="50" />								<span class="error">This is an error</span>
 							</div>
 						</div>
 						<div class="bottom">
@@ -65,8 +55,11 @@ include('header.php');
 							<div class="clear"></div>
 						</div>
 					</form>
+
 					<form class="login active">
 						<h3>Logi sisse</h3>
+ 					<?php echo validation_errors(); ?>
+  					 <?php echo form_open('Verifylogin'); ?>
 
 						<div>
 							<label>Kasutajanimi:</label>
