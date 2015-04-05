@@ -5,8 +5,7 @@
 	form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,
 	hgroup,menu,nav,nav2,output,ruby,section,summary,time,mark,audio,
 	video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,
-	aside,details,figcaption,figure,footer,header,hgroup,menu,nav,nav2,form_wrapper,
-	section{display:block;}
+	aside,details,figcaption,figure,footer,header,hgroup,menu,nav,nav2,form_wrapper,section{display:block;}
 	body{line-height:1;}ol,ul{list-style:none;}
 	blockquote,q{quotes:none;}
 	blockquote:before,
@@ -28,6 +27,7 @@ body {
 	font-size: 90%;
 	
 }
+
 
 
 #welcome {
@@ -381,3 +381,8 @@ tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
 }
+
+
+
+
+

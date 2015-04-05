@@ -6,7 +6,61 @@ include('header.php');
 					<div class="12u skel-cell-important">
 						<section class="content">	
 
-<?php
+<?php		
+/* INCLUSION OF LIBRARY FILEs*/
+	require_once( 'Facebook/FacebookSession.php');
+	require_once( 'Facebook/FacebookRequest.php' );
+	require_once( 'Facebook/FacebookResponse.php' );
+	require_once( 'Facebook/FacebookSDKException.php' );
+	require_once( 'Facebook/FacebookRequestException.php' );
+	require_once( 'Facebook/FacebookRedirectLoginHelper.php');
+	require_once( 'Facebook/FacebookAuthorizationException.php' );
+	require_once( 'Facebook/GraphObject.php' );
+	require_once( 'Facebook/GraphUser.php' );
+	require_once( 'Facebook/GraphSessionInfo.php' );
+	require_once( 'Facebook/Entities/AccessToken.php');
+	require_once( 'Facebook/HttpClients/FacebookCurl.php' );
+	require_once( 'Facebook/HttpClients/FacebookHttpable.php');
+	require_once( 'Facebook/HttpClients/FacebookCurlHttpClient.php');
+/* USE NAMESPACES */
+	
+	use Facebook\FacebookSession;
+	use Facebook\FacebookRedirectLoginHelper;
+	use Facebook\FacebookRequest;
+	use Facebook\FacebookResponse;
+	use Facebook\FacebookSDKException;
+	use Facebook\FacebookRequestException;
+	use Facebook\FacebookAuthorizationException;
+	use Facebook\GraphObject;
+	use Facebook\GraphUser;
+	use Facebook\GraphSessionInfo;
+	use Facebook\FacebookHttpable;
+	use Facebook\FacebookCurlHttpClient;
+	use Facebook\FacebookCurl;
+					
+if(isset($sess)){
+			$_SESSION['fb_token']=$sess->getToken();
+	 		//create request object,execute and capture response
+		$request = new FacebookRequest($sess, 'GET', '/me');
+		// from response get graph object
+		$response = $request->execute();
+		$graph = $response->getGraphObject(GraphUser::className());
+		// use graph object methods to get user details
+		$id = $graph->getId(); 
+		$name= $graph->getName();
+		//$image='https://graph.facebook.com/'.$id.'/picture?width=300';
+		             // To Get Facebook ID
+ 	    	$fbuname = $graph->getProperty('username');  // To Get Facebook Username
+ 	    	$fbfullname = $graph->getProperty('name'); // To Get Facebook full name
+	   	 $femail = $graph->getProperty('email');    // To Get Facebook email ID
+		echo "hi $name <br>";
+		echo "email: $femail <br>";
+		echo "Full name: $fbfullname <br>";
+		//echo "Image: $image <br>";
+		
+			
+
+
 if(isset($_POST['add']))
 {
 $servername = "localhost";
@@ -20,6 +74,11 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+$id = $graph->getId();
+$autor = "SELECT UID FROM users WHERE users.fuid=$id";
+$result=mysql_query($autor);
+$value=mysql_fetch_array($result);
+$vastus=$value[0];
 $pealkiri = $_POST['pealkiri'];
 $algus = $_POST['algus'];
 $lopp = $_POST['lopp'];
@@ -27,8 +86,9 @@ $lahtekoht = $_POST['lahtekoht'];
 $sihtkoht = $_POST['sihtkoht'];
 $transport = $_POST['transport'];
 $info = $_POST['info'];
-$sql = "INSERT INTO kuulutus (pealkiri, algus, lopp, lahtekoht, sihtkoht, transport, info)
-VALUES ('$pealkiri', '$algus', '$lopp', '$lahtekoht', '$sihtkoht', '$transport','$info')";
+
+$sql = "INSERT INTO kuulutus (pealkiri, autor, algus, lopp, lahtekoht, sihtkoht, transport, info)
+VALUES ('$pealkiri', '$vastus', '$algus', '$lopp', '$lahtekoht', '$sihtkoht', '$transport','$info')";
 
 if (mysqli_query($conn, $sql)) {
     echo "Andmed said edukalt lisatud!";
@@ -36,7 +96,6 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-mysqli_close($conn);
 }
 else
 {
@@ -94,8 +153,19 @@ if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT kuulutus.pealkiri, kuulutus.algus, kuulutus.lopp, kuulutus.lahtekoht, kuulutus.sihtkoht, kuulutus.transport, kuulutus.info, CONCAT(user.name ,'\n', user.email ,
- '\n', user.telefon) as 'andmed' FROM kuulutus JOIN user WHERE kuulutus.autor=user.id GROUP BY kuulutus.autor, kuulutus.lopp HAVING kuulutus.autor=1";
+$id = $graph->getId(); 
+$sql1 = "SELECT COUNT(*) as kokku FROM kuulutus,users WHERE kuulutus.autor=users.UID AND users.fuid=$id GROUP BY kuulutus.autor";
+$result1 = $conn->query($sql1);
+if ($result1->num_rows > 0) {
+	echo 'Sinu kuulutuste arv: ';
+	  while($row = $result1->fetch_assoc()) {
+	echo $row["kokku"]. "<br>"; }}
+
+
+
+$sql = "SELECT kuulutus.pealkiri, kuulutus.algus, kuulutus.lopp, kuulutus.lahtekoht, kuulutus.sihtkoht, kuulutus.transport, kuulutus.info, 
+CONCAT(users.ffname ,'\n', users.femail) as 'andmed' FROM kuulutus JOIN users WHERE kuulutus.autor=users.UID AND 
+users.fuid=$id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -165,13 +235,16 @@ if ($result->num_rows > 0) {
 
 } else {
      echo "0 results";
-}
+}}
 
-$conn->close();
+
+$conn->close(); 
 ?>  
 
 
 <?php
+}else {
+     echo "Kuulutusi saavad lisada ainult sisse loginud kasutajad.";
 }
 ?>
  </section>

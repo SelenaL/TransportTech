@@ -1,6 +1,8 @@
 <?php
 include('header.php');
 ?>
+
+
 <div class="container" id="welcome">
 				<div class="row">
 					<div class="12u skel-cell-important">
@@ -22,8 +24,8 @@ if ($conn->connect_error) {
 } 
 
 $sql = "SELECT kuulutus.pealkiri, kuulutus.algus, kuulutus.lopp, kuulutus.lahtekoht, kuulutus.sihtkoht, 
-kuulutus.transport, kuulutus.info, CONCAT(user.name ,'\n', user.email , '\n', user.telefon) as 'andmed' 
-FROM kuulutus JOIN user WHERE kuulutus.autor=user.id";
+kuulutus.transport, kuulutus.info, CONCAT(users.ffname ,'\n', users.femail) as 'andmed' 
+FROM kuulutus JOIN users WHERE kuulutus.autor=users.UID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

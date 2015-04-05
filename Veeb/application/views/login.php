@@ -1,117 +1,107 @@
 <?php
 include('header.php');
+?>
+<div class="container" id="welcome">
+				<div class="row">
+					<div class="12u skel-cell-important">
+						<section class="content">
+							
 
-?> 
 
-						
+<?php
+/*	FACEBOOK LOGIN BASIC - PHP SDK V4.0
+ *	file 			- index.php
+ * 	Developer 		- Krishna Teja G S
+ *	Website			- http://packetcode.com/apps/fblogin-basic/
+ *	Date 			- 27th Sept 2014
+ *	license			- GNU General Public License version 2 or later
+*/
+/* INCLUSION OF LIBRARY FILEs*/
+	require_once( 'Facebook/FacebookSession.php');
+	require_once( 'Facebook/FacebookRequest.php' );
+	require_once( 'Facebook/FacebookResponse.php' );
+	require_once( 'Facebook/FacebookSDKException.php' );
+	require_once( 'Facebook/FacebookRequestException.php' );
+	require_once( 'Facebook/FacebookRedirectLoginHelper.php');
+	require_once( 'Facebook/FacebookAuthorizationException.php' );
+	require_once( 'Facebook/GraphObject.php' );
+	require_once( 'Facebook/GraphUser.php' );
+	require_once( 'Facebook/GraphSessionInfo.php' );
+	require_once( 'Facebook/Entities/AccessToken.php');
+	require_once( 'Facebook/HttpClients/FacebookCurl.php' );
+	require_once( 'Facebook/HttpClients/FacebookHttpable.php');
+	require_once( 'Facebook/HttpClients/FacebookCurlHttpClient.php');
+/* USE NAMESPACES */
 	
-				<div id="form_wrapper" class="form_wrapper">
-					<form class="register">
-						<h3>Registreerimine</h3>
-						<div class="column">
-							<div>
-								<label for='username' >Kasutajanimi:</label>
-								<input type='text' name='username' id='username' maxlength="50" />								<span class="error">This is an error</span>
-							</div>
-							<div>
-								<label for='password' >Salasõna:</label>
-								<input type='password' name='password' id='password' maxlength="50" />
-							
-								<span class="error">This is an error</span>
-							</div>
-							
+	use Facebook\FacebookSession;
+	use Facebook\FacebookRedirectLoginHelper;
+	use Facebook\FacebookRequest;
+	use Facebook\FacebookResponse;
+	use Facebook\FacebookSDKException;
+	use Facebook\FacebookRequestException;
+	use Facebook\FacebookAuthorizationException;
+	use Facebook\GraphObject;
+	use Facebook\GraphUser;
+	use Facebook\GraphSessionInfo;
+	use Facebook\FacebookHttpable;
+	use Facebook\FacebookCurlHttpClient;
+	use Facebook\FacebookCurl;
+/*PROCESS*/
+	if(isset($_REQUEST['logout']))
+	{
+	unset($_SESSION['fb_token']);
+	}
 
-				
-                                                        <div>
-								<label for='telefon' >Telefoni nr:</label>
-								<input type='text' name='telefon' id='telefon' maxlength="50" />								<span class="error">This is an error</span>
-							</div>
-							
-						</div>
-						<div class="column">
-                                                        <div>
-								<label for='name' >Nimi:</label>
-								<input type='text' name='name' id='name' maxlength="50" />								<span class="error">This is an error</span>
-							</div>
-                                                        
-														<div>
-								<label for='email' >E-mail:</label>
-								<input type='text' name='email' id='email' maxlength="50" />								<span class="error">This is an error</span>
-							</div>
-	<div>
-								<label for='ettevote' >Ettevõte:</label>
-								<input type='text' name='ettevote' id='ettevote' maxlength="50" />								<span class="error">This is an error</span>
-							</div>
-						</div>
-						<div class="bottom">
-							<input type="submit" value="Registreeri" /><br>
-                                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
-                            </fb:login-button>
-                                                        
+	//2.Use app id,secret and redirect url
+	 $app_id = '1463194253970485';
+	 $app_secret = '6540067fcf7c014be0cb396f0cbfe8c1';
+	 $redirect_url='http://transporttech.cs.ut.ee/index.php/main/n6uded';
+	 
+	 //3.Initialize application, create helper object and get fb sess
+	 FacebookSession::setDefaultApplication($app_id,$app_secret);
+	 $helper = new FacebookRedirectLoginHelper($redirect_url);
+	 $sess = $helper->getSessionFromRedirect();
 
-<div id="status">
-</div>
-							<a href="index.html" rel="login" class="linkform">Sul on juba konto olemas? Logi sisse siit</a>
-							<div class="clear"></div>
-						</div>
-					</form>
-
-					<form class="login active">
-						<h3>Logi sisse</h3>
- 					<?php echo validation_errors(); ?>
-  					 <?php echo form_open('Verifylogin'); ?>
-
-						<div>
-							<label>Kasutajanimi:</label>
-							<input type="text" />
-							<span class="error">This is an error</span>
-						</div>
-						<div>
-							<label>Salasõna: <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Unustasid salasõna?</a></label>
-							<input type="password" />
-							<span class="error">This is an error</span>
-						</div>
-						<div class="bottom">
-							<input type="submit" value="Logi sisse"></input><br>
-                                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" login_text="Logi sisse Facebookiga" >
-                            </fb:login-button>
-                                                        
-
-<div id="status">
-</div>
-                                                     
-							<a href="register.html" rel="register" class="linkform">Sul pole veel kontot? Registreeru siin</a>
-							<div class="clear"></div>
-						</div>
-                                                
-					</form>
-					<form class="forgot_password">
-						<h3>Unustasid salasõna</h3>
-						<div>
-							<label>Kasutajanimi või E-mail:</label>
-							<input type="text" />
-							<span class="error">This is an error</span>
-						</div>
-   
-                                                
-                                                
-						<div class="bottom">
-							<input type="submit" value="Saada meeldetuletus"></input>
-							<a href="index.html" rel="login" class="linkform">Tuli meelde? Logi sisse siit</a>
-							<a href="register.html" rel="register" class="linkform">Sul pole kontot? Registreeri siin</a>
-                                                        
-							<div class="clear"></div>
-						</div>
-					</form>
-				</div>
-				<div class="clear"></div>
-			</div>
+	if(isset($_SESSION['fb_token'])){
+	$sess= new FacebookSession($_SESSION['fb_token']);	
+}
+	$logout= 'http://transporttech.cs.ut.ee/index.php/main/n6uded?logout=true';
+	//4. if fb sess exists echo name 
+	 	if(isset($sess)){
+			$_SESSION['fb_token']=$sess->getToken();
+	 		//create request object,execute and capture response
+		$request = new FacebookRequest($sess, 'GET', '/me');
+		// from response get graph object
+		$response = $request->execute();
+		$graph = $response->getGraphObject(GraphUser::className());
+		// use graph object methods to get user details
+		$id = $graph->getId(); 
+		$name= $graph->getName();
+		//$image='https://graph.facebook.com/'.$id.'/picture?width=300';
+		             // To Get Facebook ID
+ 	    	$fbuname = $graph->getProperty('username');  // To Get Facebook Username
+ 	    	$fbfullname = $graph->getProperty('name'); // To Get Facebook full name
+	   	 $femail = $graph->getProperty('email');    // To Get Facebook email ID
+		echo "hi $name <br>";
+		echo "email: $femail <br>";
+		echo "Full name: $fbfullname <br>";
+		//echo "Image: $image <br>";
+		
 			
-		</div>
-                
-                
-                <br><br><br>
+	echo "<a href='".$logout."'><button>Logout</button></a>";
+    
+	}else{
+		//else echo login
+		echo '<a href='.$helper->getLoginUrl().'><img src=http://www.melanidimoda.co/media/facebookfree/default/fb-login-button_small.png></a>';
+	}
+?>
 
+
+
+        </section>
+					</div>
+				</div>
+				</div>
 <?php
 include('footer.php');
 ?>
