@@ -1,3 +1,4 @@
+
 <?php
 include('header.php');
 ?>
@@ -6,10 +7,10 @@ include('header.php');
 <div class="container" id="welcome">
 				<div class="row">
 					<div class="12u skel-cell-important">
-						<section class="content">
-							
+						<section class="content">							
 <?php
-
+// Set session variables
+$_SESSION["page"] = $_SERVER['REQUEST_URI'];
 $servername = "localhost";
 $username = "tt";
 $password = "v66diline";

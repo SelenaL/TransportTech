@@ -6,7 +6,10 @@ include('header.php');
 				<div class="row">
 					<div class="12u skel-cell-important">
                                             <section class="content">
-
+<?php
+// Set session variables
+$_SESSION["page"] = $_SERVER['REQUEST_URI'];
+?>
 Meie lehel kehtiv hinnakiri: <p>
 Kuulutuse sisestamine TASUTA k&#245;ikidele <p>
 Tasulised lisateenused: <p>

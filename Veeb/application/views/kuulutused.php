@@ -65,17 +65,6 @@ if(isset($sess)){
 
 if(isset($_POST['add']))
 {
-$servername = "localhost";
-$username = "tt";
-$password = "v66diline";
-$dbname = "tt";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 $id = $graph->getId();
 $autor = "SELECT UID FROM users WHERE users.fuid=$id";
 $result=mysql_query($autor);
@@ -88,6 +77,19 @@ $lahtekoht = $_POST['lahtekoht'];
 $sihtkoht = $_POST['sihtkoht'];
 $transport = $_POST['transport'];
 $info = $_POST['info'];
+
+
+$servername = "localhost";
+$username = "tt";
+$password = "v66diline";
+$dbname = "tt";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 $sql = "INSERT INTO kuulutus (pealkiri, autor, algus, lopp, lahtekoht, sihtkoht, transport, info)
 VALUES ('$pealkiri', '$vastus', '$algus', '$lopp', '$lahtekoht', '$sihtkoht', '$transport','$info')";
