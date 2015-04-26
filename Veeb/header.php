@@ -9,13 +9,7 @@ if(isset($_SESSION['page']) && isset($_GET['code'])) {
 
 ?>
 <!DOCTYPE HTML>
-<?php
-if(isset($_SERVER['REQUEST_URI'])&& $_SERVER['REQUEST_URI']=='/index.php/main/kontakt'){
- echo '<html manifest="/manifest.manifest">';
-}
-else{
-echo '<html>';}
-?>
+<html manifest="/manifest.manifest">
 <head>
 
 		<meta charset="utf-8">
@@ -27,7 +21,6 @@ echo '<html>';}
 		
 		
 			<link rel="stylesheet" href="/kujundus.css" />
-			<script src="/pilt.js" type="text/javascript"></script>
                         <script src="/cufon-yui.js" type="text/javascript"></script>
                     <script src="/ChunkFive_400.font.js" type="text/javascript"></script>
                     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -40,7 +33,6 @@ echo '<html>';}
 				<div id="header">
 
                                     <?php
-
 
 /*	FACEBOOK LOGIN BASIC - PHP SDK V4.0
  *	file 			- index.php
@@ -80,7 +72,7 @@ echo '<html>';}
 	use Facebook\FacebookCurlHttpClient;
 	use Facebook\FacebookCurl;
 /*PROCESS*/
-if(isset($_SERVER['REQUEST_URI'])&& $_SERVER['REQUEST_URI']!='/index.php/main/kontakt'){
+
 	if(isset($_REQUEST['logout']))
 	{
 	unset($_SESSION['fb_token']);
@@ -157,7 +149,7 @@ if(isset($_SERVER['REQUEST_URI'])&& $_SERVER['REQUEST_URI']!='/index.php/main/ko
 				
 		<a href="<?php echo htmlspecialchars($helper->getLoginUrl()); ?>"><img src=http://www.oefitness.com/images/fb_button.png alt="Logi sisse Facebookiga"></a>
 		<?php
-	}}
+	}
 ?>
 
 

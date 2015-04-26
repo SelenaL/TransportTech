@@ -1,10 +1,8 @@
 CACHE MANIFEST
-/footer.php
-/hinnakiri.php
-/home.php
-/kontakt.php
-/kuulutused.php
-/login.php
-/n6uded.php
-/register.php
-/reklaam.php
+
+/kujundus.css
+http://transporttech.cs.ut.ee/index.php/main/kontakt
+
+NETWORK:
+http://transporttech.cs.ut.ee/?code=*
+*

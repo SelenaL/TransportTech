@@ -6,7 +6,9 @@ include('header.php');
 					<div class="12u skel-cell-important">
 						<section class="content">	
 
-<?php		
+<?php
+// Set session variables
+$_SESSION["page"] = $_SERVER['REQUEST_URI'];		
 /* INCLUSION OF LIBRARY FILEs*/
 	require_once( 'Facebook/FacebookSession.php');
 	require_once( 'Facebook/FacebookRequest.php' );
@@ -161,7 +163,11 @@ if ($result1->num_rows > 0) {
 	  while($row = $result1->fetch_assoc()) {
 	echo $row["kokku"]. "<br>"; }}
 
+?> 
+ <button onclick="vaata('reka');">Vaata oma kuulutusi</button>
 
+<div id="reka" class="reka">
+<?php	
 
 $sql = "SELECT kuulutus.pealkiri, kuulutus.algus, kuulutus.lopp, kuulutus.lahtekoht, kuulutus.sihtkoht, kuulutus.transport, kuulutus.info, 
 CONCAT(users.ffname ,'\n', users.femail) as 'andmed' FROM kuulutus JOIN users WHERE kuulutus.autor=users.UID AND 
@@ -239,7 +245,7 @@ if ($result->num_rows > 0) {
 
 
 $conn->close(); 
-?>  
+?>  </div>
 
 
 <?php
