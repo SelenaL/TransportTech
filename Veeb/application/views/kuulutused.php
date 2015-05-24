@@ -55,9 +55,9 @@ if(isset($sess)){
  	    	$fbuname = $graph->getProperty('username');  // To Get Facebook Username
  	    	$fbfullname = $graph->getProperty('name'); // To Get Facebook full name
 	   	 $femail = $graph->getProperty('email');    // To Get Facebook email ID
-		echo "hi $name <br>";
+		echo "<p>Tere $name <br>";
 		echo "email: $femail <br>";
-		echo "Full name: $fbfullname <br>";
+		//echo "Full name: $fbfullname <br></p>";
 		//echo "Image: $image <br>";
 		
 			
@@ -161,7 +161,7 @@ $id = $graph->getId();
 $sql1 = "SELECT COUNT(*) as kokku FROM kuulutus,users WHERE kuulutus.autor=users.UID AND users.fuid=$id GROUP BY kuulutus.autor";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
-	echo 'Sinu kuulutuste arv: ';
+	echo '<p>Sinu kuulutuste arv: ';
 	  while($row = $result1->fetch_assoc()) {
 	echo $row["kokku"]. "<br>"; }}
 
@@ -252,7 +252,7 @@ $conn->close();
 
 <?php
 }else {
-     echo "Kuulutusi saavad lisada ainult sisse loginud kasutajad.";
+     echo "<p>Kuulutusi saavad lisada ainult sisse loginud kasutajad.</p>";
 }
 ?>
  </section>

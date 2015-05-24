@@ -20,7 +20,8 @@ echo '<html>';}
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<link rel="stylesheet" href="/kujundus.css" />
 			<script src="/pilt.js" type="text/javascript"></script>
-                       
+                       			<script src="/JS.js" type="text/javascript"></script>
+
 			</head>
 <body>
 <br>
@@ -124,7 +125,7 @@ if(isset($_SERVER['REQUEST_URI'])&& $_SERVER['REQUEST_URI']!='/index.php/main/ko
 		mysqli_close($conn);
 		}
 	
-	echo "<a href='".$logout."'><img src=http://www.plantdays.com/img/fb-logout.png ></a>";
+	echo "<a href='".$logout."'><img src=http://www.plantdays.com/img/fb-logout.png alt='Logi välja' ></a>";
 	}else{?>
 				
 		<a href="<?php echo htmlspecialchars($helper->getLoginUrl()); ?>"><img src="/fb_button.png" alt="Logi sisse Facebookiga"></a>

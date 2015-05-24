@@ -10,6 +10,7 @@ include('header.php');
 // Set session variables
 $_SESSION["page"] = $_SERVER['REQUEST_URI'];
 ?>
+<p>
 Meie lehel kehtiv hinnakiri: <p>
 Kuulutuse sisestamine TASUTA k&#245;ikidele <p>
 Tasulised lisateenused: <p>
@@ -17,7 +18,7 @@ Kuulutuse esilet&#245;stmine :<p>
 1.00&euro; / p&#228;ev<p>
 5.00&euro; / n&#228;dal<p>
 20.00&euro; / kuu<p>
-
+</p>
 
 
 
